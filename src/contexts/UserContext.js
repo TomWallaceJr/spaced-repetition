@@ -6,11 +6,25 @@ import IdleService from '../services/idle-service'
 const UserContext = React.createContext({
   user: {},
   error: null,
-  setError: () => {},
-  clearError: () => {},
-  setUser: () => {},
-  processLogin: () => {},
-  processLogout: () => {},
+  language: null,
+  words: null,
+  nextWord: null,
+  response: null,
+  guess: null,
+  isClicked: false,
+  setGuess: () => { },
+  setResponse: () => { },
+  setError: () => { },
+  clearError: () => { },
+  setUser: () => { },
+  processLogin: () => { },
+  processLogout: () => { },
+  setLanguage: () => { },
+  setWords: () => { },
+  setNextWord: () => { },
+  setTotalScore: () => { },
+  setClicked: () => { },
+
 })
 
 export default UserContext
@@ -18,7 +32,19 @@ export default UserContext
 export class UserProvider extends Component {
   constructor(props) {
     super(props)
-    const state = { user: {}, error: null }
+    const state = {
+      user: {},
+      error: null,
+      language: null,
+      words: null,
+      nextWord: null,
+      totalScore: null,
+      currWord: null,
+      guess: null,
+      response: null,
+      isClicked: false,
+      currentWord: "",
+    }
 
     const jwtPayload = TokenService.parseAuthToken()
 
@@ -60,6 +86,54 @@ export class UserProvider extends Component {
     this.setState({ user })
   }
 
+  setLanguage = (language) => {
+    this.setState({
+      language: language,
+    });
+  };
+
+  setWords = (words) => {
+    this.setState({
+      words: words,
+    });
+  };
+
+  setCurrentWord = (word) => {
+    this.setState({
+      currentWord: word,
+    });
+  };
+
+  setNextWord = (word) => {
+    this.setState({
+      nextWord: word,
+    });
+  };
+
+  setResponse = (response) => {
+    this.setState({
+      response: response,
+    });
+  };
+
+  setGuess = (guess) => {
+    this.setState({
+      guess: guess,
+    });
+  };
+
+  setTotalScore = (totalScore) => {
+    this.setState({
+      totalScore: totalScore,
+    });
+  };
+
+  setClicked = (t) => {
+    this.setState({
+      isClicked: t,
+    });
+  };
+
   processLogin = authToken => {
     TokenService.saveAuthToken(authToken)
     const jwtPayload = TokenService.parseAuthToken()
@@ -67,25 +141,25 @@ export class UserProvider extends Component {
       id: jwtPayload.user_id,
       name: jwtPayload.name,
       username: jwtPayload.sub,
-    })
+    });
     IdleService.regiserIdleTimerResets()
     TokenService.queueCallbackBeforeExpiry(() => {
       this.fetchRefreshToken()
-    })
-  }
+    });
+  };
 
   processLogout = () => {
-    TokenService.clearAuthToken()
-    TokenService.clearCallbackBeforeExpiry()
-    IdleService.unRegisterIdleResets()
-    this.setUser({})
-  }
+    TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+    this.setUser({});
+  };
 
   logoutBecauseIdle = () => {
-    TokenService.clearAuthToken()
-    TokenService.clearCallbackBeforeExpiry()
-    IdleService.unRegisterIdleResets()
-    this.setUser({ idle: true })
+    TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+    this.setUser({ idle: true });
   }
 
   fetchRefreshToken = () => {
@@ -94,12 +168,12 @@ export class UserProvider extends Component {
         TokenService.saveAuthToken(res.authToken)
         TokenService.queueCallbackBeforeExpiry(() => {
           this.fetchRefreshToken()
-        })
+        });
       })
       .catch(err => {
         this.setError(err)
-      })
-  }
+      });
+  };
 
   render() {
     const value = {
@@ -110,11 +184,11 @@ export class UserProvider extends Component {
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
-    }
+    };
     return (
       <UserContext.Provider value={value}>
         {this.props.children}
       </UserContext.Provider>
-    )
-  }
-}
+    );
+  };
+};

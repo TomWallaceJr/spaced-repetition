@@ -11,12 +11,15 @@ form {
   Button {
     width: 80px;
     height: 30px;
-    background-color: #b20101;
+    background-color: #960202;
     color: white;
     border-radius: 50%;
     box-shadow: 2px 3px 3px 1px rgb(244, 248, 3);
   }
 
+  Button:hover {
+      background-color: black;
+  }
   Label {
     margin: 5px;
   }
