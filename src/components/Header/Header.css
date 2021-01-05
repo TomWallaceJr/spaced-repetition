@@ -3,7 +3,7 @@ header {
     padding-bottom: 10px;
     color: rgb(255, 36, 36);
     font-weight: bolder;
-    padding: 50px;
+    padding-bottom: 10%;
   }
 
   
@@ -29,6 +29,7 @@ header {
   .title a {
     text-decoration: none;
     color: rgb(255, 36, 36);
+    font-size: 3rem;
     font-family: fantasy;
   }
 

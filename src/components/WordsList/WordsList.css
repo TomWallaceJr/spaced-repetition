@@ -1,0 +1,28 @@
+.words {
+    box-shadow: 1px 3px 3px 1px #b20101;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+@media only screen and (min-width: 600px) {
+    
+        .words {
+          box-shadow: 1px 3px 3px 1px #ff0909;
+          border-radius: 15px;
+          padding: 10px;
+          flex-grow: 1;
+          width: calc(100% * (1 / 5) - 10px - 1px);
+          gap: 3%;
+          overflow: auto;
+          margin: 5px;
+        }
+
+    .words-container {
+        display: flex;
+        flex-flow: row wrap;
+        max-width: 70%;
+        margin: auto;
+        justify-content: space-between;
+    }
+}

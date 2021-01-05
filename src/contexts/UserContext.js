@@ -11,7 +11,7 @@ const UserContext = React.createContext({
   nextWord: null,
   response: null,
   guess: null,
-  isClicked: false,
+  submitted: false,
   setGuess: () => { },
   setResponse: () => { },
   setError: () => { },
@@ -24,7 +24,6 @@ const UserContext = React.createContext({
   setNextWord: () => { },
   setTotalScore: () => { },
   setClicked: () => { },
-
 })
 
 export default UserContext
@@ -42,7 +41,7 @@ export class UserProvider extends Component {
       currWord: null,
       guess: null,
       response: null,
-      isClicked: false,
+      submitted: false,
       currentWord: "",
     }
 
@@ -130,7 +129,7 @@ export class UserProvider extends Component {
 
   setClicked = (t) => {
     this.setState({
-      isClicked: t,
+      submitted: t,
     });
   };
 
@@ -179,12 +178,30 @@ export class UserProvider extends Component {
     const value = {
       user: this.state.user,
       error: this.state.error,
+      totalScore: this.state.totalScore,
+      submitted: this.state.submitted,
+      language: this.state.language,
+      guess: this.state.guess,
+      words: this.state.words,
+      nextWord: this.state.nextWord,
+      setCurrWord: this.setCurrWord,
+      response: this.state.response,
+      currentWord: this.state.currentWord,
+      setClicked: this.setClicked,
       setError: this.setError,
       clearError: this.clearError,
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
+      setLanguage: this.setLanguage,
+      setWords: this.setWords,
+      setNextWord: this.setNextWord,
+      setTotalScore: this.setTotalScore,
+      setGuess: this.setGuess,
+      setResponse: this.setResponse,
+      setCurrentWord: this.setCurrentWord,
     };
+
     return (
       <UserContext.Provider value={value}>
         {this.props.children}
