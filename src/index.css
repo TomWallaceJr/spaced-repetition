@@ -1,15 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
-
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: "Ubuntu", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+        90deg,
+        rgba(181, 0, 0, 0.7) 0%,
+        rgba(255, 251, 1, 0.7) 50%,
+        rgba(181, 0, 0, 0.7) 100%
+    );
+}
+
+section {
+  text-align: center;
 }
 
 :root {

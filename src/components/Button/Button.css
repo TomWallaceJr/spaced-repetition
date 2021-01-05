@@ -1,0 +1,9 @@
+
+Button {
+    width: 110px;
+    height: 50px;
+    background-color: #b20101;
+    color: white;
+    box-shadow: 2px 3px 3px 1px grey;
+    align-self: center;
+  }

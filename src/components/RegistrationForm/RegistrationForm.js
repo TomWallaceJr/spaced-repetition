@@ -42,6 +42,7 @@ class RegistrationForm extends Component {
     return (
       <form
         onSubmit={this.handleSubmit}
+        className='center'
       >
         <div role='alert'>
           {error && <p>{error}</p>}
@@ -83,6 +84,7 @@ class RegistrationForm extends Component {
             Sign up
           </Button>
           {' '}
+          <br />
           <Link to='/login'>Already have an account?</Link>
         </footer>
       </form>

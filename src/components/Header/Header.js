@@ -15,7 +15,7 @@ class Header extends Component {
     return (
       <div>
         <span>
-          {this.context.user.name}
+          Hello {this.context.user.name}!
         </span>
         <nav>
           <Link
@@ -41,9 +41,9 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <h1>
+        <h1 className='title'>
           <Link to='/'>
-            Spaced repetition
+            Spanish Spaced Repetition!
           </Link>
         </h1>
         {TokenService.hasAuthToken()

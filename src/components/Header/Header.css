@@ -1,0 +1,41 @@
+header {
+    text-align: center;
+    padding-bottom: 10px;
+    color: rgb(255, 36, 36);
+    font-weight: bolder;
+    padding: 50px;
+  }
+
+  
+  nav a {
+    text-decoration: none;
+    color: rgb(255, 36, 36);
+    text-align: center;
+  }
+
+  nav a:hover {
+      background-color: black;
+  }
+
+  
+  nav {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+  }
+  
+  
+  
+  .title a {
+    text-decoration: none;
+    color: rgb(255, 36, 36);
+    font-family: fantasy;
+  }
+
+  .title a:hover {
+      background-color: black;
+  }
+  
+  .welcome {
+    color: lightgrey;
+  }
