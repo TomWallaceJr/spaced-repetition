@@ -44,7 +44,7 @@ class LearningRoute extends Component {
     const guessWord = e.target.guess.value.toLowerCase().trim();
     this.context.setGuess(guessWord);
     console.log(guessWord)
-    //do POST!
+    // guess sent to api via POST request.... listening asynchronously
     try {
       const response = await fetch(`${API.API_ENDPOINT}/language/guess`, {
         method: "POST",
@@ -63,10 +63,11 @@ class LearningRoute extends Component {
       this.setState({ error: e });
     }
 
+    // sets context values
     this.context.setTotalScore(this.context.response.totalScore);
-
     this.context.setClicked(true);
 
+    // set state based on wether or not guess was correct or not
     if (this.context.response.isCorrect) {
       this.setState({
         answer: "correct",
@@ -86,34 +87,37 @@ class LearningRoute extends Component {
         <form onSubmit={(e) => this.submitForm(e, this.context)}>
           {this.state.answer === null && <h2>Translate the word:</h2>}
           {this.state.answer === "correct" && (
-            <h2 className="feedback">You were correct! :D</h2>
+            <h2 className="feedback">That Is Correct!</h2>
           )}
           {this.state.answer === "incorrect" && (
-            <h2 className="feedback">Good try, but not quite right :(</h2>
+            <h2 className="feedback">Good try, but that is incorrect! </h2>
           )}
           <span className="word-to-guess">
             {this.context.nextWord ? this.context.nextWord.nextWord : null}
           </span>
           <div>
-            <label htmlFor="input">
-              What's the translation for this word?
-            </label>
-            <p>
-              <input
-                autoFocus
-                name="guess"
-                id="input"
-                type="text"
-                required
-              ></input>
-            </p>
+            {this.context.submitted === false && (
+              <label htmlFor="input">
+                What's the translation for this word?
+              </label>)}
+            {this.context.submitted === false && (
+              <p>
+                <input
+                  autoFocus
+                  name="guess"
+                  id="input"
+                  type="text"
+                  required
+                ></input>
+              </p>)}
+
             {this.context.submitted === false && (
               <button type="submit">Submit your answer</button>
             )}
             {this.context.submitted === true && <Feedback />}
           </div>
-          <p className="green">Correct Answers: {this.state.correct}</p>
-          <p className="red">Incorrect Answers: {this.state.incorrect}</p>
+          <p>Correct Answers: {this.state.correct}</p>
+          <p>Incorrect Answers: {this.state.incorrect}</p>
           <p>Your total score is: {this.state.total}</p>
         </form>
       </main>

@@ -9,8 +9,8 @@ export default class Feedback extends Component {
     render() {
         return (
             <>
-                <Link to='/lear'>
-                    <button>Try Another Word</button>
+                <Link to='/learn'>
+                    <button type='button'>Try Another Word</button>
                 </Link>
                 <div className="DisplayFeedback">
                     <p>
@@ -18,7 +18,6 @@ export default class Feedback extends Component {
                         {this.context.response.answer}{' '}
                         and you chose {' '}{this.context.guess}!
                     </p>
-
                 </div>
             </>
         );

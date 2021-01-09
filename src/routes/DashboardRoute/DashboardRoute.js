@@ -30,7 +30,7 @@ class DashboardRoute extends Component {
   render() {
     return (
       <section>
-        <h1>Welcome Back To Your {this.context.language} lessons {this.context.user.name}!</h1>
+        <h1>Welcome Back To Your Spanish Lessons {this.context.user.name}!</h1>
         <p>
           {this.context.totalScore
             ? `To date, you have ${this.context.totalScore} correct answers`
