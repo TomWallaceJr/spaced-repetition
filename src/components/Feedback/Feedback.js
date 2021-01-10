@@ -6,13 +6,16 @@ import { Link } from 'react-router-dom';
 export default class Feedback extends Component {
     static contextType = UserContext;
 
+    handleClick = () => {
+        window.location.reload();
+    }
+
     render() {
         return (
             <>
-                <Link to='/learn'>
-                    <button type='button'>Try Another Word</button>
-                </Link>
-                <div className="DisplayFeedback">
+
+                <button type='button' onClick={() => this.handleClick()}>Try Another Word</button>
+                <div className="feedback-display">
                     <p>
                         The correct answer was {' '}
                         {this.context.response.answer}{' '}

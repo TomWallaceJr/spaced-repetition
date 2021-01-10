@@ -20,6 +20,7 @@ class DashboardRoute extends Component {
       const res = await response.json();
       this.context.setLanguage(res.language.name);
       this.context.setWords(res.words);
+      console.log(res.words)
       this.context.setTotalScore(res.language.total_score);
       document.getElementById("learn").focus();
     } catch (error) {
