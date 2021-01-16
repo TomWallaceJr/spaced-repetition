@@ -1,4 +1,4 @@
 export default {
-  API_ENDPOINT: 'https://git.heroku.com/sleepy-inlet-36289.git',
-  TOKEN_KEY: 'blogful-client-auth-token',
+  API_ENDPOINT: 'https://sleepy-inlet-36289.herokuapp.com/api',
+  TOKEN_KEY: "blogful-client-auth-token",
 }

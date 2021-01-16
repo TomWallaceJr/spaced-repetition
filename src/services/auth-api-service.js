@@ -7,7 +7,9 @@ const AuthApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        'Accept': 'application/json, text/plain, /',
       },
+      mode: 'no-cors',
       body: JSON.stringify(user),
     })
       .then(res =>
@@ -22,6 +24,7 @@ const AuthApiService = {
       headers: {
         'content-type': 'application/json',
       },
+      mode: 'no-cors',
       body: JSON.stringify({ username, password }),
     })
       .then(res =>
@@ -36,6 +39,7 @@ const AuthApiService = {
       headers: {
         'authorization': `Bearer ${TokenService.getAuthToken()}`,
       },
+      mode: 'no-cors',
     })
       .then(res =>
         (!res.ok)

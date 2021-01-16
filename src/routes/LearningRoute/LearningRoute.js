@@ -23,6 +23,7 @@ class LearningRoute extends Component {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
+        mode: 'no-cors',
       });
       const json = await response.json();
       this.context.setNextWord(json);
@@ -52,6 +53,7 @@ class LearningRoute extends Component {
           "content-type": "application/json",
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
+        mode: "no-cors",
         body: JSON.stringify({ guess: guessWord }),
       });
       const json = await response.json();

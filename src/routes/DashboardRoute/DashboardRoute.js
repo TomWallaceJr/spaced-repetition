@@ -16,6 +16,7 @@ class DashboardRoute extends Component {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
+        mode: 'no-cors',
       });
       const res = await response.json();
       this.context.setLanguage(res.language.name);
