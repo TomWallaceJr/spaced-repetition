@@ -3,7 +3,7 @@ import TokenService from "../../services/token-service";
 import UserContext from "../../contexts/UserContext";
 import WordsList from "../../components/WordsList/WordsList";
 import { Link } from 'react-router-dom';
-import API from "../../config";
+import config from "../../config";
 import "./DashboardRoute.css";
 
 
@@ -12,7 +12,7 @@ class DashboardRoute extends Component {
 
   async componentDidMount() {
     try {
-      const response = await fetch(`${API.API_ENDPOINT}/language`, {
+      const response = await fetch(`${config.API_ENDPOINT}/api/language`, {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
