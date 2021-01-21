@@ -19,11 +19,11 @@ class LearningRoute extends Component {
 
   async componentDidMount() {
     try {
-      const response = await fetch(`${API.API_ENDPOINT}/api/language/head`, {
+      const response = await fetch(`${API.API_ENDPOINT}/language/head`, {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
-        mode: 'no-cors',
+        // mode: 'no-cors',
       });
       const json = await response.json();
       this.context.setNextWord(json);
@@ -47,13 +47,13 @@ class LearningRoute extends Component {
     console.log(guessWord)
     // guess sent to api via POST request.... listening asynchronously
     try {
-      const response = await fetch(`${API.API_ENDPOINT}/api/language/guess`, {
+      const response = await fetch(`${API.API_ENDPOINT}/language/guess`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
-        mode: "no-cors",
+        //mode: "no-cors",
         body: JSON.stringify({ guess: guessWord }),
       });
       const json = await response.json();

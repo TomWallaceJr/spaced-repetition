@@ -12,18 +12,18 @@ class DashboardRoute extends Component {
 
   async componentDidMount() {
     try {
-      const response = await fetch(`${config.API_ENDPOINT}/api/language`, {
+      const response = await fetch(`${config.API_ENDPOINT}/language`, {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
-        mode: 'no-cors',
+        // mode: 'no-cors',
       });
       const res = await response.json();
       this.context.setLanguage(res.language.name);
       this.context.setWords(res.words);
       console.log(res.words)
       this.context.setTotalScore(res.language.total_score);
-      document.getElementById("learn").focus();
+      //document.getElementById("learn").focus();
     } catch (error) {
       this.context.setError(error);
     }

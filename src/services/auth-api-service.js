@@ -3,12 +3,12 @@ import TokenService from './token-service'
 
 const AuthApiService = {
   postUser(user) {
-    return fetch(`${config.API_ENDPOINT}/api/user`, {
+    return fetch(`${config.API_ENDPOINT}/user`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
-      mode: 'no-cors',
+      // mode: 'no-cors',
       body: JSON.stringify(user),
     })
       .then(res =>
@@ -18,12 +18,12 @@ const AuthApiService = {
       )
   },
   postLogin({ username, password }) {
-    return fetch(`${config.API_ENDPOINT}/api/auth/token`, {
+    return fetch(`${config.API_ENDPOINT}/auth/token`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
-      mode: 'no-cors',
+      // mode: 'no-cors',
       body: JSON.stringify({ username, password }),
     })
       .then(res =>
@@ -33,12 +33,12 @@ const AuthApiService = {
       )
   },
   refreshToken() {
-    return fetch(`${config.API_ENDPOINT}/api/auth/token`, {
+    return fetch(`${config.API_ENDPOINT}/auth/token`, {
       method: 'PUT',
       headers: {
         'authorization': `Bearer ${TokenService.getAuthToken()}`,
       },
-      mode: 'no-cors',
+      // mode: 'no-cors',
     })
       .then(res =>
         (!res.ok)
