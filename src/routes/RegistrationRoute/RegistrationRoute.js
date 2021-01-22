@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm'
 
+
 class RegistrationRoute extends Component {
   static defaultProps = {
     history: {
@@ -9,11 +10,11 @@ class RegistrationRoute extends Component {
   }
 
   handleRegistrationSuccess = () => {
-    const { location, history } = this.props
-    const destination = (location.state || {}).from || '/'
-    history.push(destination)
-    // const { history } = this.props
-    // history.push('/')
+    // const { location, history } = this.props
+    // const destination = (location.state || {}).from || '/'
+    // history.push(destination)
+    const { history } = this.props
+    history.push('/login')
   }
 
   render() {
