@@ -3,35 +3,66 @@ import { Link } from 'react-router-dom'
 import { Input, Required, Label } from '../Form/Form'
 import AuthApiService from '../../services/auth-api-service'
 import Button from '../Button/Button'
+import UserContext from '../../contexts/UserContext'
 import './RegistrationForm.css'
 
 class RegistrationForm extends Component {
+  static contextType = UserContext
   static defaultProps = {
-    onRegistrationSuccess: () => { }
+    onRegistrationSuccess: () => { },
+    onLoginSuccess: () => { },
+    location: {},
+    history: {
+      push: () => { },
+    }
   }
+
+
 
   state = { error: null }
 
   firstInput = React.createRef()
 
-  handleSubmit = ev => {
-    ev.preventDefault()
-    const { name, username, password } = ev.target
+  handleLogin = (username, password) => {
+    AuthApiService.postLogin({
+      username: username,
+      password: password,
+    })
+      .then((res) => {
+        this.context.processLogin(res.authToken);
+        this.props.onRegistrationSuccess();
+      })
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
+  };
+
+  handleSubmit = (ev) => {
+    console.log("submit");
+    this.setState({
+      loading: true,
+    });
+    ev.preventDefault();
+    const { name, username, password } = ev.target;
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
       password: password.value,
     })
-      .then(user => {
-        name.value = ''
-        username.value = ''
-        password.value = ''
-        this.props.onRegistrationSuccess()
+      .then((user) => {
+        console.log(user);
+        this.handleLogin(username.value, password.value);
+        this.setState({
+          loading: true,
+        });
+        name.value = "";
+        username.value = "";
+        password.value = "";
       })
-      .catch(res => {
-        this.setState({ error: res.error })
-      })
-  }
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
+  };
 
   componentDidMount() {
     this.firstInput.current.focus()
