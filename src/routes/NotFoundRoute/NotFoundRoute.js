@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class NotFoundRoute extends Component {
   render() {
@@ -8,7 +8,7 @@ class NotFoundRoute extends Component {
         <p>Try going back to your previous page.</p>
       </section>
     );
-  }
-}
+  };
+};
 
-export default NotFoundRoute
+export default NotFoundRoute;

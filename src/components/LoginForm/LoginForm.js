@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
-import { Input, Label } from '../Form/Form'
-import AuthApiService from '../../services/auth-api-service'
-import UserContext from '../../contexts/UserContext'
-import Button from '../Button/Button'
+import React, { Component } from 'react';
+import { Input, Label } from '../Form/Form';
+import AuthApiService from '../../services/auth-api-service';
+import UserContext from '../../contexts/UserContext';
+import Button from '../Button/Button';
 
 class LoginForm extends Component {
   static defaultProps = {
     onLoginSuccess: () => { }
-  }
+  };
 
-  static contextType = UserContext
+  static contextType = UserContext;
 
-  state = { error: null }
+  state = { error: null };
 
-  firstInput = React.createRef()
+  firstInput = React.createRef();
 
   handleSubmit = ev => {
     ev.preventDefault()
@@ -33,12 +33,12 @@ class LoginForm extends Component {
       })
       .catch(res => {
         this.setState({ error: res.error })
-      })
-  }
+      });
+  };
 
   componentDidMount() {
     this.firstInput.current.focus()
-  }
+  };
 
   render() {
     const { error } = this.state
@@ -76,8 +76,8 @@ class LoginForm extends Component {
           Login
         </Button>
       </form>
-    )
-  }
-}
+    );
+  };
+};
 
-export default LoginForm
+export default LoginForm;

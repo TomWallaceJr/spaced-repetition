@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Input, Required, Label } from '../Form/Form'
-import AuthApiService from '../../services/auth-api-service'
-import Button from '../Button/Button'
-import UserContext from '../../contexts/UserContext'
-import './RegistrationForm.css'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Input, Required, Label } from '../Form/Form';
+import AuthApiService from '../../services/auth-api-service';
+import Button from '../Button/Button';
+import UserContext from '../../contexts/UserContext';
+import './RegistrationForm.css';
 
 class RegistrationForm extends Component {
-  static contextType = UserContext
+  static contextType = UserContext;
   static defaultProps = {
     onRegistrationSuccess: () => { },
     onLoginSuccess: () => { },
@@ -15,13 +15,13 @@ class RegistrationForm extends Component {
     history: {
       push: () => { },
     }
-  }
+  };
 
 
 
-  state = { error: null }
+  state = { error: null };
 
-  firstInput = React.createRef()
+  firstInput = React.createRef();
 
   handleLogin = (username, password) => {
     AuthApiService.postLogin({
@@ -66,7 +66,7 @@ class RegistrationForm extends Component {
 
   componentDidMount() {
     this.firstInput.current.focus()
-  }
+  };
 
   render() {
     const { error } = this.state
@@ -119,8 +119,8 @@ class RegistrationForm extends Component {
           <Link to='/login'>Already have an account?</Link>
         </footer>
       </form>
-    )
-  }
-}
+    );
+  };
+};
 
-export default RegistrationForm
+export default RegistrationForm;

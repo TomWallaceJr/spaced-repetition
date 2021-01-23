@@ -63,7 +63,7 @@ class LearningRoute extends Component {
       });
     } catch (e) {
       this.setState({ error: e });
-    }
+    };
 
     // sets context values
     this.context.setTotalScore(this.context.response.totalScore);
@@ -80,8 +80,8 @@ class LearningRoute extends Component {
         answer: "incorrect",
         incorrect: this.state.incorrect + 1,
       });
-    }
-  }
+    };
+  };
 
   render() {
     return (
@@ -124,7 +124,7 @@ class LearningRoute extends Component {
         </form>
       </main>
     );
-  }
-}
+  };
+};
 
 export default LearningRoute;

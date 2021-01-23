@@ -8,7 +8,7 @@ export default class Feedback extends Component {
 
     handleClick = () => {
         window.location.reload();
-    }
+    };
 
     render() {
         return (
@@ -24,5 +24,5 @@ export default class Feedback extends Component {
                 </div>
             </>
         );
-    }
-}
+    };
+};

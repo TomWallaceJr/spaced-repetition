@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import RegistrationForm from '../../components/RegistrationForm/RegistrationForm'
+import React, { Component } from 'react';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 
 
 class RegistrationRoute extends Component {
@@ -7,12 +7,12 @@ class RegistrationRoute extends Component {
     history: {
       push: () => { },
     },
-  }
+  };
 
   handleRegistrationSuccess = () => {
     const { history } = this.props
     history.push('/')
-  }
+  };
 
   render() {
     return (
@@ -26,7 +26,7 @@ class RegistrationRoute extends Component {
         />
       </section>
     );
-  }
-}
+  };
+};
 
-export default RegistrationRoute
+export default RegistrationRoute;

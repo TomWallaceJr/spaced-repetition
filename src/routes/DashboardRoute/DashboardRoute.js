@@ -26,8 +26,8 @@ class DashboardRoute extends Component {
       //document.getElementById("learn").focus();
     } catch (error) {
       this.context.setError(error);
-    }
-  }
+    };
+  };
 
   render() {
     return (
@@ -53,7 +53,7 @@ class DashboardRoute extends Component {
 
       </section>
     );
-  }
-}
+  };
+};
 
 export default DashboardRoute;
